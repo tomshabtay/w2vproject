@@ -36,7 +36,7 @@ npm test
 ### Postman Configuration
 If you wish to explore the API with Postman
 ```
-w2vproj-postman
+w2vproj-postman\wv.postman_collection.json
 ```
 
 ### Calculate Post Score Algorithm
