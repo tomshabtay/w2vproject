@@ -46,12 +46,12 @@ you can change the GRAVITY value for fine tuning the the way old post are ranked
 ```
 w2vproj-app-dockerized/src/config.js
 ```
-this function is called by a scheduled job and by the upvote/downvote endpoint (after x number of upvotes/downvotes)
+the algorithm called by a scheduled job and by the upvote/downvote endpoint (after x number of upvotes/downvotes)
 
 ### Jobs
 
 #### updateScoresJob
-feching list of posts ordered by last score update date then updating posts scores.
+feching list of posts ordered by last_score_update_date, then updating posts scores using the algorithm.
 
 #### updateTopListJob
-feching list of top posts and saving to a diffrent table for better preformance with toplist endpoint.
+feching list of top posts and saving to a diffrent table for better preformance on toplist endpoint.
