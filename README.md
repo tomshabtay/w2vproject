@@ -11,6 +11,7 @@ docker-compose up --build
 ### Run the test
 ```
 cd w2vproj-tests
+npm install
 npm test
 ```
 
