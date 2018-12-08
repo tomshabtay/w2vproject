@@ -10,7 +10,7 @@ function getTopListDev() {
         .get('/dev/post/toplist')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(201)
+        .expect(200)
         .then(function (result, err) {
             if (err) {
                 assert.throws("Error thrown");
@@ -24,7 +24,7 @@ function getTopList() {
         .get('/post/toplist')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(201)
+        .expect(200)
         .then(function (result, err) {
             if (err) {
                 assert.throws("Error thrown");
@@ -53,7 +53,7 @@ function upvotePost(postId) {
         .get('/post/upvote/' + postId)
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(201)
+        .expect(200)
         .then(function (result, err) {
             if (err) {
                 assert.throws("Error thrown");
@@ -62,12 +62,29 @@ function upvotePost(postId) {
         });
 }
 
+function updatePost(postId) {
+    return baseRequest
+        .put('/post')
+        .query({ id: postId })
+        .send({ title: "hi" })
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .then(function (result, err) {
+            
+            if (err) {
+                assert.throws("Error thrown");
+            }
+            
+        });
+}
+
 function downvotePost(postId) {
     return baseRequest
         .get('/post/downvote/' + postId)
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(201)
+        .expect(200)
         .then(function (result, err) {
             if (err) {
                 assert.throws("Error thrown");
@@ -80,7 +97,7 @@ function addBuckPostsDev() {
     return baseRequest
         .get('/dev/post/addposts')
         .set('Accept', 'application/json')
-        .expect(201)
+        .expect(200)
         .then(function (result, err) {
             if (err) {
                 assert.throws("Error thrown");
@@ -92,7 +109,7 @@ function removeAllPostsDev() {
     return baseRequest
         .get('/dev/post/removeall')
         .set('Accept', 'application/json')
-        .expect(201)
+        .expect(200)
         .then(function (result, err) {
             if (err) {
                 assert.throws("Error thrown");
@@ -101,7 +118,7 @@ function removeAllPostsDev() {
 }
 
 
-describe("Verify user\'s repository has any contributor", function () {
+describe("Post Tests", function () {
     this.timeout(10000);
     this.slow(1000);
     const state = {};
@@ -129,31 +146,39 @@ describe("Verify user\'s repository has any contributor", function () {
         })
     });
 
-    it('upvote post', function () {
+    it('upvotes post', function () {
         for (let i = 0; i < 100; i++) {
             endScore = upvotePost(state.postId)
         }
     });
 
-    it('downvote post', function () {
+    it('downvotes post', function () {
         for (let i = 0; i < 100; i++) {
             endScore = downvotePost(state.postId)
         }
     });
 
+    it('update post', function () {
+        return updatePost(state.postId)
+    });
+
     it('bulk posts adding (for adding stress)', function () {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 40; i++) {
             addBuckPostsDev()
-        }
+        }    
+        
     });
 
     it('get top list dev (realtime list)', function () {
         return getTopListDev()
     });
 
+
     it('get top list prod (cached list)', function () {
         return getTopList()
     });
+
+
 
     it('remove all posts', function () {
         return removeAllPostsDev()
