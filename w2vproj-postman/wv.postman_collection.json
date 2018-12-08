@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "c68d5978-8d97-4673-a3a9-301e44318ddb",
+		"name": "wv",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreatePost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"title\"\n}"
+				},
+				"url": {
+					"raw": "localhost:4000/post",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpvotePost",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/post/upvote/5c0aa695d3f7b40cce4c688a",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"upvote",
+						"5c0aa695d3f7b40cce4c688a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopListLive-dev",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/post/topdev",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"topdev"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DownvotePost",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/post/downvote/5c0aa6f11b292a0cf533a792",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"downvote",
+						"5c0aa6f11b292a0cf533a792"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePost",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/post?id=5c0aa928f24aa90d6d4be1a0&title=title",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5c0aa928f24aa90d6d4be1a0"
+						},
+						{
+							"key": "title",
+							"value": "title"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
