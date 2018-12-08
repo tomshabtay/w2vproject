@@ -14,7 +14,7 @@ router.get('/post/toplist', (req, res) => {
     if (err) {
       res.status(500).json(err)
     }
-    res.status(201).send(posts)
+    res.status(200).send(posts)
 
   })
 })
@@ -34,7 +34,7 @@ router.get('/post/downvote/:id', (req, res) => {
         let score = alg.calcPostScore(points, date, doc._id, false) //force update set to false
       }, 1000)
     }
-    res.status(201).send(doc)
+    res.status(200).send(doc)
   });
 
 })
@@ -55,7 +55,7 @@ router.get('/post/upvote/:id', (req, res) => {
       }, 1000)
     }
 
-    res.status(201).send(doc)
+    res.status(200).send(doc)
   });
 
 })
@@ -84,7 +84,7 @@ router.put('/post', (req, res) => {
   if (!req.query.id) {
     return res.status(400).send('Missing URL parameter: id')
   }
-
+  
   PostModel.findOneAndUpdate({
     _id: req.query.id
   }, req.body, {
@@ -128,7 +128,7 @@ router.get('/dev/post/toplist', (req, res) => {
     posts.forEach(function (post) {
       postArr.push(post);
     });
-    res.status(201).send(postArr)
+    res.status(200).send(postArr)
   });
 
 })
@@ -136,7 +136,7 @@ router.get('/dev/post/toplist', (req, res) => {
 // GET localhost:4000/dev/post/removeall
 router.get('/dev/post/removeall', (req, res) => {
   PostModel.remove({}, function (err, posts){
-    res.status(201).send("ok")
+    res.status(200).send("ok")
   })
 })
 
@@ -160,11 +160,11 @@ router.get('/dev/post/addposts', (req, res) => {
   PostModel.insertMany(posts)
     .then((result) => {
       console.log("result ", result);
-      res.status(201).send("ok") 
+      res.status(200).send({msg:"ok"}) 
     })
     .catch(err => {
       console.error("error ", err);
-      res.status(201).send("failed")
+      res.status(200).send("failed")
 
     });
 
@@ -177,11 +177,11 @@ router.get('/dev/post/addredditposts', (req, res) => {
   PostModel.insertMany(postStub.posts)
     .then((result) => {
       console.log("result ", result);
-      res.status(201).send("ok") 
+      res.status(200).send("ok") 
     })
     .catch(err => {
       console.error("error ", err);
-      res.status(201).send("failed")
+      res.status(200).send("failed")
 
     });
 

@@ -9,10 +9,17 @@
 			"name": "CreatePost",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"title\":\"title\"\n}"
+					"raw": "{\n\t\"title\":\"new\"\n}"
 				},
 				"url": {
 					"raw": "localhost:4000/post",
@@ -37,7 +44,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "localhost:4000/post/toplist",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"toplist"
+					]
 				}
 			},
 			"response": []
@@ -52,7 +67,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:4000/post/upvote/5c0aa695d3f7b40cce4c688a",
+					"raw": "localhost:4000/post/upvote/5c0abd5388e1e700068a9d3f",
 					"host": [
 						"localhost"
 					],
@@ -60,7 +75,7 @@
 					"path": [
 						"post",
 						"upvote",
-						"5c0aa695d3f7b40cce4c688a"
+						"5c0abd5388e1e700068a9d3f"
 					]
 				}
 			},
@@ -76,14 +91,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:4000/post/topdev",
+					"raw": "localhost:4000/dev/post/toplist",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
+						"dev",
 						"post",
-						"topdev"
+						"toplist"
 					]
 				}
 			},
@@ -99,7 +115,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:4000/post/downvote/5c0aa6f11b292a0cf533a792",
+					"raw": "localhost:4000/post/downvote/5c0ab81bbc82641230ad9c49",
 					"host": [
 						"localhost"
 					],
@@ -107,7 +123,7 @@
 					"path": [
 						"post",
 						"downvote",
-						"5c0aa6f11b292a0cf533a792"
+						"5c0ab81bbc82641230ad9c49"
 					]
 				}
 			},
@@ -123,7 +139,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:4000/post?id=5c0aa928f24aa90d6d4be1a0&title=title",
+					"raw": "localhost:4000/post?id=5c0aaf0cffff700eee86440c&title=title",
 					"host": [
 						"localhost"
 					],
@@ -134,12 +150,84 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "5c0aa928f24aa90d6d4be1a0"
+							"value": "5c0aaf0cffff700eee86440c"
 						},
 						{
 							"key": "title",
 							"value": "title"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPostsDev",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/dev/post/addposts",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"post",
+						"addposts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveAllPosts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/dev/post/removeall",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"post",
+						"removeall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddRedditPosts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/dev/post/addredditposts",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"post",
+						"addredditposts"
 					]
 				}
 			},

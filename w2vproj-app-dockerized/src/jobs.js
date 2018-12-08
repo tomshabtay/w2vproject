@@ -19,28 +19,32 @@ module.exports.updateScoresJob = () => {
 
 module.exports.updateTopListJob = () => {
     setInterval(() => {
-        PostModel.find({}, ['title', 'score', 'timestamp', 'ups'], { limit: 100, sort: { score: -1 } }, function (err, posts) {
-            if (err) {
-                return
-            }
-            var postArr = [];
-            posts.forEach(function (post) {
-                postArr.push(post)
-            });
-
-            PostTopListModel.findOneAndUpdate({}, { $set: { body: postArr } }, { new: true }, (err, doc) => {
-                console.log("Top list updated.")
-            })
-
-        });
+        updateTopList()
     }, 10 * 1000)
+}
+
+function updateTopList() {
+    PostModel.find({}, ['title', 'score', 'timestamp', 'ups'], { limit: 100, sort: { score: -1 } }, function (err, posts) {
+        if (err) {
+            return
+        }
+        var postArr = [];
+        posts.forEach(function (post) {
+            postArr.push(post)
+        });
+
+        PostTopListModel.findOneAndUpdate({}, { $set: { body: postArr } }, { new: true }, (err, doc) => {
+            console.log("Top list updated.")
+        })
+
+    });
 }
 
 module.exports.initTopListJob = () => {
     PostTopListModel.remove({}, function (err, posts) {
-        if(err) {
+        if (err) {
             console.log(err)
-            return 
+            return
         }
 
         let model = new PostTopListModel({ body: "" })
