@@ -162,11 +162,8 @@ describe("Post Tests", function () {
         return updatePost(state.postId)
     });
 
-    it('bulk posts adding (for adding stress)', function () {
-        for (let i = 0; i < 40; i++) {
-            addBuckPostsDev()
-        }    
-        
+    it('bulk posts adding', function () {
+        return addBuckPostsDev()
     });
 
     it('get top list dev (realtime list)', function () {
