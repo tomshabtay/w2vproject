@@ -41,17 +41,17 @@ w2vproj-postman\wv.postman_collection.json
 
 ### Calculate Post Score Algorithm
 This algorithem will calculate a score based on upvotes number and creation date.
-Newer post with larger upvotes number will result a greater score.
-you can change the GRAVITY value for fine tuning the the way old post are ranked compared to newer post in the config file.
+New posts with many upvotes will result a higher score.
+to fine tune how old post ranked compared to new posts change the 'gravity' value in the config file.
 ```
 w2vproj-app-dockerized/src/config.js
 ```
-the algorithm called by a scheduled job and by the upvote/downvote endpoint (after x number of upvotes/downvotes)
+the algorithm used by a scheduled job and by the upvote/downvote endpoint.
 
 ### Jobs
 
 #### updateScoresJob
-feching list of posts ordered by last_score_update_date, then updating posts scores using the algorithm.
+Getting from db a list of posts ordered by 'last_score_update_date' index. then updating posts scores using the algorithm.
 
 #### updateTopListJob
-feching list of top posts and saving to a diffrent table for better preformance on toplist endpoint.
+Getting from db a list of top posts and saving them to a diffrent table. done to protect the database preformance when toplist endpoint traffic is high.
