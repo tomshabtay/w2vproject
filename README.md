@@ -48,6 +48,20 @@ w2vproj-app-dockerized/src/config.js
 ```
 the algorithm used by a scheduled job and by the upvote/downvote endpoint.
 
+#### Algorithem explanation:
+- Calculate the diffrence in hours between post date and current date.
+- Use equation to calculate the score
+- Update the score in the database
+
+#### Equation explanation:
+- Gravity: a constant value for tuning.
+- Hours: diffrence in hours between post date and current date.
+- Points: number of upvotes.
+
+![equation](http://mathurl.com/yccx3wyv.png)
+
+When the divder is getting larger post score will get smaller resulting old posts to decay over time. 
+
 ### Jobs
 
 #### updateScoresJob
